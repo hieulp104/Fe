@@ -1,0 +1,75 @@
+{
+  "name": "fe",
+  "version": "0.1.0",
+  "description": "Bộ sưu tập component Three.js / WebGL tương tác cho React — làm lại từ ThreeUI Community.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./lib-dist/index.js",
+  "module": "./lib-dist/index.js",
+  "types": "./lib-dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib-dist/index.d.ts",
+      "import": "./lib-dist/index.js",
+      "default": "./lib-dist/index.js"
+    },
+    "./style.css": "./lib-dist/style.css",
+    "./components/*": {
+      "types": "./lib-dist/package-components/*.d.ts",
+      "import": "./lib-dist/package-components/*.js",
+      "default": "./lib-dist/package-components/*.js"
+    },
+    "./assets/*": "./lib-dist/assets/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib-dist",
+    "LICENSE",
+    "ASSET-LICENSES.md",
+    "FONT-LICENSES.md",
+    "THIRD_PARTY_NOTICES.md",
+    "README.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hieulp104/Fe.git"
+  },
+  "homepage": "https://github.com/hieulp104/Fe#readme",
+  "bugs": {
+    "url": "https://github.com/hieulp104/Fe/issues"
+  },
+  "scripts": {
+    "dev": "vite",
+    "generate:lib": "node scripts/generate-library-entry.mjs",
+    "typecheck": "tsc --noEmit",
+    "build:site": "npm run typecheck && vite build",
+    "build:lib": "npm run generate:lib && vite build --config vite.lib.config.js && tsc -p tsconfig.lib.json && node scripts/copy-library-assets.mjs",
+    "build": "npm run build:site",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three128": "npm:three@0.128.0",
+    "three165": "npm:three@0.165.0"
+  },
+  "peerDependencies": {
+    "react": ">=18 <20",
+    "react-dom": ">=18 <20",
+    "three": ">=0.149 <1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@types/three": "0.149.0",
+    "@vitejs/plugin-react": "^5.1.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "three": "0.149.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  },
+  "private": true
+}
